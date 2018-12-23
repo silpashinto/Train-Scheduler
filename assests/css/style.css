@@ -1,0 +1,17 @@
+ h5 {
+    padding:10px;
+    background-color: black;
+    color: white;
+ }
+ .btn {
+    padding: 10px;
+    margin-left: 12px;
+    
+ }
+ span{
+    color: red;  
+ }
+ 
+ .jumbotron{    
+    text-align: center;
+ }
