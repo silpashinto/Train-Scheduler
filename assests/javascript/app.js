@@ -23,19 +23,22 @@ var database = firebase.database();
 // Calls storeInputs function if submit button clicked
 $("#addtrain").on("click", function (event) {
 
-    validate();
-    storeInDb(event);
+    event.preventDefault();
+    var x = validate();
+    if(x)storeInDb(event);
+    
 
 });
 
 
-function validate(event) {
+function validate() {
 
     // form validation - if empty - alert
     if ($('#trainName').val().length === 0 || $('#destination').val().length === 0 || $("#firstTrainTime").length === 0 || $('#frequency') === 0) {
         alert("Please Fill All Required Fields");
-        event.preventDefault();
+       return false;
     }
+    else return true;
 
 }
 
@@ -67,6 +70,7 @@ var storeInDb = function (event) {
     var frequency = $('#frequency').val().trim();
     var firstTrainTime = $("#firstTrainTime").val().trim();
     var e_trainTime = moment(firstTrainTime, "HH:mm").format("X");
+    
 
     //push to DB
     database.ref().push({
